@@ -14,12 +14,12 @@ const signup = async (req, res, next) => {
       })
     }
     const newUser = await service.addUser({ email, password })
-    const { subscription } = newUser
+    const { _id, subscription, avatarURL } = newUser
     res.status(201).json({
       status: 'Success',
       code: 201,
       data: {
-        user: { email, subscription },
+        user: { _id, email, subscription, avatarURL },
       },
     })
   } catch (error) {
